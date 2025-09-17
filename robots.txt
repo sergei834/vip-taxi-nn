@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://doggie-nexys.github.io/vip-taxi-nnn/sitemap.xml
+Sitemap: https://sergei834.github.io/vip-taxi-nn/
