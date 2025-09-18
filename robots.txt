@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sergei834.github.io/vip-taxi-nn/
+Sitemap: https://sergei834.github.io/vip-taxi-nn/sitemap.xml
