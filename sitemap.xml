@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>https://sergei834.github.io/vip-taxi-nn/</loc>
+      <lastmod>2025-09-18</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1.0</priority>
+   </url>
+   <!-- Если у тебя есть другие страницы, добавь их вот так: -->
+   <!--
+   <url>
+      <loc>https://sergei834.github.io/vip-taxi-nn/about.html</loc>
+      <lastmod>2025-09-18</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   -->
+</urlset>
