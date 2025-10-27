@@ -135,15 +135,77 @@
             font-size: 1.1rem;
         }
 
+        /* Модальное окно */
+        #messenger-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .modal-content h3 {
+            margin-bottom: 20px;
+            color: #1a1a2e;
+        }
+
+        .messenger-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            transition: opacity 0.2s;
+        }
+
+        .messenger-btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn-telegram { background-color: #0088cc; }
+        .btn-whatsapp { background-color: #25D366; }
+        .btn-viber { background-color: #7360F2; }
+
+        .close-modal {
+            margin-top: 20px;
+            color: #666;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
         /* Мобильная адаптация */
         @media (max-width: 600px) {
             header h1 { font-size: 1.8rem; }
             .car-name { font-size: 1.5rem; }
             .info-row, .service, .price { font-size: 0.95rem; }
             .btn-order { padding: 12px 24px; }
+            .messenger-btn { padding: 12px; font-size: 1rem; }
         }
 
-        /* ПК-версия — больше пространства */
         @media (min-width: 800px) {
             .container {
                 max-width: 800px;
@@ -151,17 +213,28 @@
             }
             .car-image { height: 350px; }
         }
+
+        .driver-email {
+        margin-top: 6px;
+        font-weight: 600;
+        color: #000;
+        text-decoration: none;
+        font-size: 1.1rem;
+        display: inline-block;
+    }
+
+    .driver-email:hover {
+        text-decoration: underline;
+    }
     </style>
 </head>
 <body>
 
-    <!-- Шапка -->
     <header>
         <h1>VIP-Такси Нижний Новгород</h1>
         <p>Элитный трансфер для деловых встреч, свадеб и путешествий</p>
     </header>
 
-    <!-- Основной контент -->
     <div class="container">
         <img src="https://github.com/doggie-nexys/vip-taxi-nnn/blob/main/photo_2025-09-02_22-52-59.jpg?raw=true" alt="Toyota Camry VIP-такси Нижний Новгород" class="car-image">
 
@@ -193,13 +266,46 @@
             <span>Мин. аренда: ⏱️ 5 часов</span>
         </div>
 
-        <button class="btn-order" onclick="window.location.href='tel:+79519047606'">Заказать</button>
+        <button class="btn-order" id="open-modal">Заказать</button>
 
         <div class="driver-info">
             <p>Сергей:</p>
-            <a href="tel:+79991234567" class="driver-phone">+7 (951) 904-76-06</a>
+            <a href="tel:+79519047606" class="driver-phone">+7 (951) 904-76-06</a>
+            <a href="mailto:sergeycolyada@gmail.com" class="driver-email">sergeycolyada@gmail.com</a>
         </div>
     </div>
 
+    <!-- Модальное окно выбора мессенджера -->
+    <div id="messenger-modal">
+        <div class="modal-content">
+            <h3>Выберите мессенджер</h3>
+            <!-- Замени USERNAME на свой Telegram-юзернейм -->
+            <a href="https://t.me/+79519047606" class="messenger-btn btn-telegram" target="_blank">Telegram</a>
+            <a href="https://wa.me/79519047606" class="messenger-btn btn-whatsapp" target="_blank">WhatsApp</a>
+            <a href="viber://chat?number=%2B79519047606" class="messenger-btn btn-viber">Viber</a>
+            <button class="close-modal" id="close-modal">Отмена</button>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('messenger-modal');
+        const openBtn = document.getElementById('open-modal');
+        const closeBtn = document.getElementById('close-modal');
+
+        openBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Закрытие по клику вне окна
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
